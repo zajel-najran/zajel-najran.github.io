@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="زاجل - فرعا نجران (القابل وتحضة): أرقام التواصل، المواقع، أوقات الدوام، ورقم الشكاوى.">
+<meta property="og:title" content="زاجل Zajel">
+<meta property="og:description" content="أرقام التواصل ومواقع فروع زاجل في نجران">
+<meta property="og:image" content="logo.png">
+<meta name="theme-color" content="#800a1e">
+<link rel="icon" href="logo.png">
+<title>زاجل Zajel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap">
+<style>
+/* Layout: one centred column; logo on a paper card, then contact rows, location, and a set-apart complaints band */
+:root {
+  --bg: #fbf6f7;
+  --paper: #ffffff;
+  --ink: #2a1016;
+  --muted: #7a5a62;
+  --line: #ecdde1;
+  --maroon: #800a1e;
+  --rose: #d63a6e;
+  --rose-soft: #fbe6ee;
+  --ok: #1d7a46; --ok-soft: #e3f4ea;
+  --warn: #9a5b00; --warn-soft: #fbf0dc;
+  --off: #7a5a62; --off-soft: #f1e8ea;
+  --display: "Aref Ruqaa", "Amiri", "Times New Roman", serif;
+  --body: "IBM Plex Sans Arabic", "Segoe UI", Tahoma, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1a0d10; --paper: #26141a; --ink: #f6e9ec; --muted: #c6a3ac; --line: #3d2229;
+    --maroon: #f08aa0; --rose: #ff6f9c; --rose-soft: #3a1823; color-scheme: dark;
+    --ok: #6fdc9b; --ok-soft: #173325; --warn: #f2c06b; --warn-soft: #3a2c12; --off: #c6a3ac; --off-soft: #33202a;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1a0d10; --paper: #26141a; --ink: #f6e9ec; --muted: #c6a3ac; --line: #3d2229;
+  --maroon: #f08aa0; --rose: #ff6f9c; --rose-soft: #3a1823; color-scheme: dark;
+  --ok: #6fdc9b; --ok-soft: #173325; --warn: #f2c06b; --warn-soft: #3a2c12; --off: #c6a3ac; --off-soft: #33202a;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body {
+  background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.7;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 32px 48px;
+}
+.wrap { max-width: 560px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px; }
+.logo {
+  background: #ffffff; border-radius: 20px; padding: 20px 24px;
+  border: 1px solid var(--line); display: flex; justify-content: center;
+}
+.logo img { width: 100%; max-width: 380px; height: auto; display: block; }
+.intro { text-align: center; }
+.intro h1 { font-family: var(--display); font-weight: 700; color: var(--maroon); font-size: 2.4rem; margin: 0; line-height: 1.3; text-wrap: balance; }
+.intro p { margin: 4px 0 0; color: var(--muted); }
+
+section h2 {
+  font-size: .85rem; font-weight: 600; letter-spacing: .02em; color: var(--muted);
+  margin: 0 0 10px; display: flex; align-items: center; gap: 10px;
+}
+section h2::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+
+.list { display: flex; flex-direction: column; gap: 10px; }
+.row {
+  background: var(--paper); border: 1px solid var(--line); border-radius: 14px;
+  padding: 14px 16px; display: flex; align-items: center; gap: 14px;
+}
+.ico {
+  width: 42px; height: 42px; border-radius: 50%; flex: none;
+  display: grid; place-items: center; background: var(--rose-soft); color: var(--maroon);
+}
+.ico svg { width: 20px; height: 20px; }
+.meta { flex: 1; min-width: 0; }
+.label { font-size: .85rem; color: var(--muted); }
+.num { font-size: 1.2rem; font-weight: 600; direction: ltr; unicode-bidi: isolate; display: inline-block; font-variant-numeric: tabular-nums; letter-spacing: .02em; user-select: all; }
+.addr { font-weight: 500; overflow-wrap: anywhere; }
+.actions { display: flex; gap: 6px; flex: none; }
+.btn {
+  font: inherit; font-size: .85rem; font-weight: 500; cursor: pointer; text-decoration: none;
+  border: 1px solid var(--line); background: transparent; color: var(--ink);
+  padding: 6px 12px; border-radius: 999px; white-space: nowrap;
+}
+.btn:hover { border-color: var(--rose); color: var(--rose); }
+.btn.solid { background: var(--maroon); border-color: var(--maroon); color: var(--paper); }
+.btn.solid:hover { background: var(--rose); border-color: var(--rose); color: #fff; }
+.btn:focus-visible { outline: 2px solid var(--rose); outline-offset: 2px; }
+
+.complaints {
+  border: 1.5px solid var(--rose); background: var(--rose-soft); border-radius: 16px;
+  padding: 18px 18px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px;
+}
+.complaints .meta { min-width: 180px; }
+.complaints .label { color: var(--maroon); font-weight: 600; font-size: .95rem; }
+.complaints .note { font-size: .85rem; color: var(--muted); margin: 2px 0 0; }
+.complaints .num { font-size: 1.5rem; color: var(--maroon); }
+
+footer { text-align: center; color: var(--muted); font-size: .8rem; }
+.toast {
+  position: fixed; left: 50%; transform: translateX(-50%);
+  bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  background: var(--ink); color: var(--bg); padding: 8px 16px; border-radius: 999px; font-size: .9rem;
+}
+.branch { background: var(--paper); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+.b-head { display: flex; align-items: center; gap: 14px; padding: 14px 16px; flex-wrap: wrap; }
+.b-name { font-family: var(--display); font-weight: 700; font-size: 1.35rem; color: var(--maroon); line-height: 1.4; }
+.b-phone {
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+  padding: 12px 16px; border-top: 1px dashed var(--line);
+}
+.status {
+  display: inline-flex; align-items: center; gap: 6px; margin-top: 4px;
+  font-size: .8rem; font-weight: 600; padding: 2px 10px; border-radius: 999px;
+  color: var(--off); background: var(--off-soft);
+}
+.status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.status.open { color: var(--ok); background: var(--ok-soft); }
+.status.soon { color: var(--warn); background: var(--warn-soft); }
+.hours { padding: 10px 16px; border-top: 1px dashed var(--line); font-size: .85rem; color: var(--muted); display: flex; flex-wrap: wrap; gap: 4px 10px; }
+.hours b { color: var(--ink); font-weight: 500; }
+.hours span { white-space: nowrap; }
+@media (prefers-reduced-motion: no-preference) {
+  .status.open::before { animation: blink 2s ease-in-out infinite; }
+}
+@keyframes blink { 50% { opacity: .35; } }
+@media (max-width: 420px) {
+  .b-head > .btn { width: 100%; text-align: center; }
+}
+/* --- Interactions --- */
+.logo { overflow: hidden; position: relative; }
+.branch, .complaints { transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+.branch:hover, .branch:focus-within { transform: translateY(-3px); border-color: var(--rose); box-shadow: 0 10px 24px -14px var(--rose); }
+.complaints:hover { transform: translateY(-3px); box-shadow: 0 10px 24px -14px var(--rose); }
+.btn:active { transform: scale(.94); }
+
+.flybird { position: fixed; z-index: 30; width: 26px; height: 26px; color: var(--rose); pointer-events: none; }
+.flybird svg { width: 100%; height: 100%; }
+
+.fab {
+  position: fixed; z-index: 20;
+  left: calc(18px + env(safe-area-inset-left, 0px));
+  bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+  width: 56px; height: 56px; border-radius: 50%; border: 0; cursor: pointer;
+  background: #25d366; color: #fff; display: grid; place-items: center;
+  box-shadow: 0 8px 20px -6px rgba(0,0,0,.35);
+}
+.fab svg { width: 28px; height: 28px; }
+.fab:focus-visible { outline: 3px solid var(--rose); outline-offset: 3px; }
+.sheet {
+  position: fixed; z-index: 21;
+  left: calc(18px + env(safe-area-inset-left, 0px));
+  bottom: calc(86px + env(safe-area-inset-bottom, 0px));
+  width: min(280px, calc(100vw - 36px));
+  background: var(--paper); border: 1px solid var(--line); border-radius: 16px;
+  padding: 14px; box-shadow: 0 16px 40px -16px rgba(0,0,0,.4);
+  display: flex; flex-direction: column; gap: 8px;
+}
+.sheet p { margin: 0 0 2px; font-weight: 600; }
+.sheet a {
+  display: flex; justify-content: space-between; align-items: center; gap: 8px;
+  padding: 10px 12px; border-radius: 12px; text-decoration: none; color: var(--ink);
+  background: var(--rose-soft);
+}
+.sheet a:hover { color: var(--maroon); }
+.sheet a small { color: var(--muted); }
+
+/* --- Opening splash --- */
+.splash {
+  position: fixed; inset: 0; z-index: 50; cursor: pointer;
+  background: var(--bg); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.splash-card { background: #ffffff; border-radius: 28px; padding: 18px 22px; width: min(420px, 100%); position: relative; overflow: hidden; }
+.splash-card img { display: block; width: 100%; height: auto; }
+.splash-text { margin: 0; font-family: var(--display); font-weight: 700; color: var(--maroon); font-size: clamp(1.6rem, 6vw, 2.2rem); text-align: center; }
+.splash-skip { font-size: .8rem; color: var(--muted); margin: 0; }
+.splash-bird { position: absolute; width: 34px; height: 34px; color: var(--rose); top: 30%; right: -40px; }
+.splash-bird svg { width: 100%; height: 100%; }
+@media (prefers-reduced-motion: reduce) { .splash { display: none; } }
+
+@media (prefers-reduced-motion: no-preference) {
+  :root { --d: 2.6s; }
+  .splash { animation: splash-out .6s calc(var(--d) - .4s) ease-in forwards; }
+  .splash-card { animation: card-in .5s ease-out both; }
+  .splash-card img { animation: write 1.4s .3s cubic-bezier(.5,0,.3,1) both; }
+  .splash-bird { animation: bird-cross 1.5s .2s ease-in-out both; }
+  .splash-text { animation: rise .6s 1.4s ease-out both; }
+  .splash-skip { animation: fade-in .4s 1.6s both; }
+
+  .btn { transition: background .15s, color .15s, border-color .15s, transform .1s; }
+  .logo img { animation: fly-in 1.1s var(--d) cubic-bezier(.2,.8,.2,1) both; }
+  .logo::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(100deg, transparent 30%, rgba(214,58,110,.18) 50%, transparent 70%);
+    transform: translateX(100%); animation: sheen 1.4s calc(var(--d) + .9s) ease-out both;
+  }
+  .wrap > :not(.logo) { animation: rise .6s ease-out both; }
+  .wrap > :nth-child(2) { animation-delay: calc(var(--d) + .4s); }
+  .wrap > :nth-child(3) { animation-delay: calc(var(--d) + .55s); }
+  .wrap > :nth-child(4) { animation-delay: calc(var(--d) + .7s); }
+  .wrap > :nth-child(5) { animation-delay: calc(var(--d) + .85s); }
+  .fab { animation: pop .4s calc(var(--d) + 1s) ease-out both, pulse 2.4s calc(var(--d) + 1.8s) ease-in-out 3; }
+  body.skip-intro { --d: 0s; }
+  .sheet { animation: rise .2s ease-out both; }
+}
+@keyframes fly-in {
+  0%   { transform: translate(-30%, 18%) rotate(-10deg) scale(.8); opacity: .25; }
+  70%  { transform: translate(2%, -3%) rotate(2deg) scale(1.02); opacity: 1; }
+  100% { transform: none; opacity: 1; }
+}
+@keyframes sheen { to { transform: translateX(-100%); } }
+@keyframes splash-out { to { opacity: 0; transform: translateY(-24px); visibility: hidden; } }
+@keyframes card-in { from { transform: scale(.92); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes write { from { clip-path: inset(0 0 0 100%); } to { clip-path: inset(0 0 0 0); } }
+@keyframes bird-cross {
+  0%   { transform: translate(0, 20px) rotate(0); opacity: 0; }
+  15%  { opacity: 1; }
+  50%  { transform: translate(-200px, -30px) rotate(-8deg); }
+  85%  { opacity: 1; }
+  100% { transform: translate(-480px, 10px) rotate(-14deg); opacity: 0; }
+}
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes rise { from { transform: translateY(12px); opacity: .3; } to { transform: none; opacity: 1; } }
+@keyframes pop { from { transform: scale(.6); } to { transform: none; } }
+@keyframes pulse { 0%,100% { box-shadow: 0 8px 20px -6px rgba(0,0,0,.35), 0 0 0 0 rgba(37,211,102,.5); } 50% { box-shadow: 0 8px 20px -6px rgba(0,0,0,.35), 0 0 0 12px rgba(37,211,102,0); } }
+</style>
+<style>body{margin:0}img{max-width:100%}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
+</head>
+<body>
+<div class="splash" id="splash" dir="rtl" lang="ar" role="presentation">
+  <div class="splash-card">
+    <img src="logo.png" alt="">
+    <span class="splash-bird"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 13c3 0 5-2 7-6 1 3 2 4.5 4 5 2-1.5 5-2 9-1-3 1-4.5 2.5-5.5 5-3 2.5-8 2.5-14.5-3z"/></svg></span>
+  </div>
+  <p class="splash-text">أهلاً بكم في زاجل</p>
+  <p class="splash-skip">اضغط للمتابعة</p>
+</div>
+
+<div class="wrap" dir="rtl" lang="ar">
+  <div class="logo"><img src="logo.png" alt="شعار زاجل Zajel"></div>
+
+  <div class="intro">
+    <h1>تواصل مع زاجل</h1>
+    <p>يسعدنا خدمتكم، اختر طريقة التواصل المناسبة لك</p>
+  </div>
+
+  <section>
+    <h2>فروعنا</h2>
+    <div class="list" id="branches"></div>
+  </section>
+
+  <section>
+    <h2>الشكاوى والملاحظات</h2>
+    <div class="complaints">
+      <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M12 7v4M12 14h.01"/></svg></span>
+      <div class="meta">
+        <div class="label">رقم الشكاوى</div>
+        <div><span class="num" id="complaintsNum"></span></div>
+        <p class="note">نستقبل شكاواكم وملاحظاتكم ونعمل على حلها بأسرع وقت</p>
+      </div>
+      <div class="actions" id="complaintsActions"></div>
+    </div>
+  </section>
+
+  <footer>زاجل · Zajel</footer>
+</div>
+<div class="toast" id="toast" role="status" hidden></div>
+<button class="fab" id="fab" type="button" aria-label="تواصل عبر واتساب" aria-expanded="false" aria-controls="sheet">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg>
+</button>
+<div class="sheet" id="sheet" dir="rtl" lang="ar" hidden>
+  <p>أي فرع تريد مراسلته؟</p>
+  <div id="sheetLinks" style="display:flex;flex-direction:column;gap:8px"></div>
+</div>
+
+<script>
+// ===== عدّل البيانات هنا =====
+const SHOP = {
+  branches: [
+    { name: "الفرع الأول", area: "نجران - القابل", number: "054 947 5261", mapUrl: "https://maps.app.goo.gl/MkwAvkicGTaiBNrp7?g_st=ic",
+      hours: [["07:15", "13:30"], ["14:30", "24:00"]] },
+    { name: "الفرع الثاني", area: "نجران - تحضة", number: "054 005 3542", mapUrl: "https://maps.app.goo.gl/krRLPAtt7DPsVWHR9?g_st=ic",
+      hours: [["08:00", "13:00"], ["14:00", "24:00"]] }
+  ],
+  complaints: "050 456 5058"
+};
+// ============================
+
+const pinIco = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>';
+const intl = n => "966" + n.replace(/\D/g, "").replace(/^0/, "");
+const esc = s => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+function actionsFor(n) {
+  return `<button class="btn" type="button" data-copy="${esc(n.replace(/\s/g, ""))}">نسخ</button>`
+    + `<a class="btn" href="https://wa.me/${intl(n)}" target="_blank" rel="noopener">واتساب</a>`
+    + `<a class="btn solid" href="tel:+${intl(n)}">اتصال</a>`;
+}
+
+// Opening hours (Saudi time)
+const toMin = s => { const [h, m] = s.split(":").map(Number); return h * 60 + m; };
+function fmt(min) {
+  const h = Math.floor(min / 60) % 24, m = min % 60;
+  return `${h % 12 || 12}:${String(m).padStart(2, "0")} ${h < 12 ? "ص" : "م"}`;
+}
+function riyadhNow() {
+  const p = new Intl.DateTimeFormat("en-GB", { timeZone: "Asia/Riyadh", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(new Date());
+  return Number(p.find(x => x.type === "hour").value) * 60 + Number(p.find(x => x.type === "minute").value);
+}
+function statusFor(hours, now) {
+  const r = hours.map(([a, z]) => [toMin(a), toMin(z)]);
+  const cur = r.find(([a, z]) => now >= a && now < z);
+  if (cur) {
+    const left = cur[1] - now;
+    return left <= 30
+      ? { cls: "soon", text: `يغلق قريبًا · ${fmt(cur[1])}` }
+      : { cls: "open", text: `مفتوح الآن · يغلق ${fmt(cur[1])}` };
+  }
+  const next = r.find(([a]) => a > now) || r[0];
+  return { cls: "", text: `مغلق · يفتح ${fmt(next[0])}` };
+}
+function updateStatus() {
+  const now = riyadhNow();
+  document.querySelectorAll(".status[data-branch]").forEach(el => {
+    const s = statusFor(SHOP.branches[el.dataset.branch].hours, now);
+    el.className = "status " + s.cls;
+    el.textContent = s.text;
+  });
+}
+
+document.getElementById("branches").innerHTML = SHOP.branches.map((b, i) => `
+  <div class="branch">
+    <div class="b-head">
+      <span class="ico">${pinIco}</span>
+      <div class="meta"><div class="b-name">${esc(b.name)}</div><div class="label">${esc(b.area)}</div><span class="status" data-branch="${i}" aria-live="polite">…</span></div>
+      <a class="btn" href="${esc(b.mapUrl)}" target="_blank" rel="noopener">الموقع على الخريطة</a>
+    </div>
+    <div class="hours"><b>أوقات الدوام:</b>${b.hours.map(([a, z]) => `<span>${fmt(toMin(a))} – ${fmt(toMin(z))}</span>`).join("<span>·</span>")}</div>
+    <div class="b-phone">
+      <span class="num">${esc(b.number)}</span>
+      <div class="actions">${actionsFor(b.number)}</div>
+    </div>
+  </div>`).join("");
+
+updateStatus();
+setInterval(updateStatus, 30000);
+
+document.getElementById("complaintsNum").textContent = SHOP.complaints;
+document.getElementById("complaintsActions").innerHTML = actionsFor(SHOP.complaints);
+
+const toast = document.getElementById("toast");
+let t;
+function show(msg) { toast.textContent = msg; toast.hidden = false; clearTimeout(t); t = setTimeout(() => toast.hidden = true, 1800); }
+// Opening splash: removes itself when its fade ends, or on tap / key press
+const splash = document.getElementById("splash");
+function endSplash(skip) {
+  if (!splash.isConnected) return;
+  if (skip) document.body.classList.add("skip-intro");
+  splash.remove();
+}
+splash.addEventListener("animationend", e => { if (e.target === splash) endSplash(false); });
+splash.addEventListener("click", () => endSplash(true));
+document.addEventListener("keydown", () => endSplash(true), { once: true });
+setTimeout(() => endSplash(false), 4000);
+
+// Floating WhatsApp button
+const fab = document.getElementById("fab"), sheet = document.getElementById("sheet");
+document.getElementById("sheetLinks").innerHTML = SHOP.branches.map(b =>
+  `<a href="https://wa.me/${intl(b.number)}" target="_blank" rel="noopener"><span>${esc(b.name)}</span><small>${esc(b.area.replace("نجران - ", ""))}</small></a>`).join("");
+function setSheet(open) { sheet.hidden = !open; fab.setAttribute("aria-expanded", open); }
+fab.addEventListener("click", e => { e.stopPropagation(); setSheet(sheet.hidden); });
+document.addEventListener("keydown", e => { if (e.key === "Escape") setSheet(false); });
+document.addEventListener("click", e => { if (!sheet.hidden && !sheet.contains(e.target)) setSheet(false); });
+
+// Little dove that flies off a copy button
+const birdSvg = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 13c3 0 5-2 7-6 1 3 2 4.5 4 5 2-1.5 5-2 9-1-3 1-4.5 2.5-5.5 5-3 2.5-8 2.5-14.5-3z"/></svg>';
+function releaseBird(from) {
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const r = from.getBoundingClientRect();
+  const bird = document.createElement("span");
+  bird.className = "flybird"; bird.innerHTML = birdSvg;
+  bird.style.left = (r.left + r.width / 2 - 13) + "px";
+  bird.style.top = (r.top - 6) + "px";
+  document.body.appendChild(bird);
+  bird.animate([
+    { transform: "translate(0,0) scale(.6) rotate(0)", opacity: 1 },
+    { transform: "translate(-30px,-50px) scale(1) rotate(-12deg)", opacity: 1, offset: .5 },
+    { transform: "translate(-80px,-120px) scale(.7) rotate(-20deg)", opacity: 0 }
+  ], { duration: 900, easing: "ease-out" }).onfinish = () => bird.remove();
+}
+
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-copy]");
+  if (!b) return;
+  const v = b.dataset.copy;
+  navigator.clipboard.writeText(v).then(() => { releaseBird(b); show("تم نسخ الرقم"); }, () => {
+    const el = b.closest(".branch, .complaints").querySelector(".num");
+    const r = document.createRange(); r.selectNodeContents(el);
+    const s = getSelection(); s.removeAllRanges(); s.addRange(r);
+    show("الرقم محدد، انسخه يدويًا");
+  });
+});
+</script>
+</body>
+</html>
